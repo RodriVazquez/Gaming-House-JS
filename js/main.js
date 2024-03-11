@@ -48,22 +48,6 @@ const carrito = [];
 
 
 // el evento input se "dispara" cada vez que un elemento de entrada cambia
-function filtro () {
-    filtrarProd.addEventListener ("input", () => {
-        const inputValue = filtrarProd.value.toLowerCase()
-        
-        if (inputValue.length >= 4) {
-        const productoFiltrado = productos.filter ((el) => el.producto.toLocaleLowerCase().includes(inputValue));
-        // "el" respresenta a cada elemento del array procutos
-        // TODO LO QUE INLUYA LO QUE EL USUARIO INGRESE, LO FILTRA EN UN NUEVO ARR (esta visto fin a comienzo, pero es la forma mas facil de interpretarlo)
-        console.log(productoFiltrado);
-
-        crearHTML();
-        }
-    })
-}
-filtro();
-
 
 function filtro() {
     filtrarProd.addEventListener("input", () => {
@@ -74,10 +58,12 @@ function filtro() {
 
             limpiarHTML(); // Limpiar el contenedor antes de agregar nuevas tarjetas
             crearHTML(productoFiltrado); // Pasar los productos filtrados para crear las tarjetas HTML
+        } else {
+            limpiarHTML(); // limpia el contenedor si el length es < 4
+            crearHTML(productos); // vuelve a generar todos los productos, en este caso sin filtro
         }
     });
 }
-filtro();
 
 function limpiarHTML() {
     wrapper.innerHTML = ''; // Limpiar el contenido HTML dentro del contenedor
@@ -102,8 +88,8 @@ function crearHTML(productosMostrados) {
         wrapper.appendChild(productoHTML);
     }
 }
-
-
+crearHTML(productos); // genero las cards de TODOS LOS PRODUCTOS DEL ARR
+filtro(); // filtro los productos del arr por nombre
 
 
 
