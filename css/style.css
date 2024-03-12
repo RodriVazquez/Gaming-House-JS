@@ -1,13 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@300;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 * {
   margin: 0;
   padding: 0;
-  font-family: "Istok Web", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 html {
   height: 100%;
-} /* si cuando creo muchas cards falla sacar esto */
+}
 
 body {
   display: flex;
@@ -39,17 +39,22 @@ body::-webkit-scrollbar-thumb {
   background-color: #0000009d;
 }
 
-.nav a {
-  margin-right: 45rem;
+.fixed {
+  position: fixed;
+  right: 0;
+  z-index: 1000; 
 }
 
 .img-logo {
   height: 8rem;
   width: auto;
+  transition: transform 0.3s ease; 
+  transform-origin: center center;
+  transform: scale(1);
 }
 
-.field-padre {
-  margin-right: 3rem;
+.img-logo:hover {
+  transform: scale(1.2);
 }
 
 .field{
@@ -70,70 +75,33 @@ body::-webkit-scrollbar-thumb {
   border-color: #4158d0;
 }
 
-
-/* CARRITO */
-.carrito-desplegado {
-  margin: 20px auto;
-  margin-top: 5rem;
-  padding: 20px;
-  background-color: #cfc6d1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 70%;
-  border-radius: 20px;
+.carrito-icon {
+  margin-left: 3rem;
+  color: white;
+  font-size: 2rem;
+  text-decoration: none;
 }
 
-.product {
-  margin-bottom: 2rem;
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  align-items: center;
-  border-bottom: 1px solid #5c5b5b;
-  padding: 10px 0;
+.carrito-icon:hover {
+  color: #bbbbbb;
 }
-
-.product img {
-  max-width: 100px;
-  max-height: 100px;
-}
-
-.cart-total {
-  text-align: right;
-  margin-top: 20px;
-  font-size: 18px;
-}
-
-.btn-cantidad,
-.btn-comprar {
-  background-color: #3F51B5;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-cantidad:hover,
-.btn-comprar:hover {
-  background-color: #303F9F;
-}
-
-.product h3, .product p {
-  margin: 0;
-}
+ /**************** Hasta acá => elementos generales y navbar ***********************/
 
 
-/* Contenedor padre de las cards */
+
+
+/************** CARDS ***************/
 .wrapper {
   width: 85%;
+  margin-top: 12rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-top: 8rem;
 }
 
 .card {
   position: relative;
-  margin: 10px;
+  margin: 10px 10px 50px 10px;
   width: 320px;
   height: 480px;
   background: #000000;
@@ -195,6 +163,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .card .contentBox .price {
+  margin-top: 5px;
   font-size: 24px;
   color: #00c3ff;
   font-weight: 700;
@@ -217,6 +186,60 @@ body::-webkit-scrollbar-thumb {
   cursor: pointer;
 }
 
+.btn-agregar{
+  --color: #560bad;
+  font-family: inherit;
+  display: inline-block;
+  width: 8em;
+  height: 2.6em;
+  line-height: 2.5em;
+  margin: 20px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color .5s;
+  z-index: 1;
+  font-size: 17px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color);
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btn-agregar:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.btn-agregar:hover {
+  color: #fff;
+}
+
+.btn-agregar:before {
+  top: 100%;
+  left: 100%;
+}
+
+.btn-agregar:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+.btn-agregar:active:before {
+  background: #3a0ca3;
+  transition: background 0s;
+}
+
+.bi-bag-plus-fill {
+  margin-right: 8px;
+}
+
 .card:hover .contentBox .buy {
   top: 0;
   opacity: 1;
@@ -225,4 +248,156 @@ body::-webkit-scrollbar-thumb {
 .card-img {
   height: 300px;
   width: auto;
+}
+
+footer p {
+  margin: 1.5rem;
+  color: white;
+}
+
+
+
+
+
+
+
+/************* CARRITO **************/
+
+.bi-arrow-left-circle-fill {
+  display: flex;
+  align-items: center;
+}
+
+.bi-arrow-left-circle-fill span {
+  margin-left: 10px;
+  font-size: 1.3rem;
+}
+
+section {
+  margin: 80px auto;
+  padding: 20px;
+  background-color: #E8EAF6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  border-radius: 15px;
+  color: #673AB7;
+}
+
+.titulo-carrito {
+  margin-bottom: 1rem;
+  border-bottom: #696969 solid 1px;
+}
+
+.carrito-vacio {
+  margin-top: 1rem;
+}
+
+.carrito-vacio-agregar {
+  text-decoration: none;
+
+}
+.carrito-vacio-agregar:hover {
+  text-decoration: underline;
+  color: #00c3ff;
+}
+
+.product {
+  margin-block: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 15px ;
+  background-color: rgb(204, 194, 194);
+  border-radius: 15px;
+}
+
+.product img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.product p {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.cart-total {
+  text-align: right;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.btn-eliminar,
+.btn-vaciar,
+.btn-comprar {
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #725AC1;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.3s;
+  border: 2px solid #725AC1;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 #725AC1;
+}
+
+.btn-eliminar:hover,
+.btn-vaciar:hover,
+.btn-comprar:hover {
+  color: white;
+  box-shadow: inset 0 -100px 0 0 #725AC1;
+}
+
+.btn-eliminar:active,
+.btn-vaciar:active,
+.btn-comprar:active {
+  transform: scale(0.9);
+}
+
+.btn-eliminar {
+  background-color: #dd1d1d;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.btn-eliminar:hover {
+  background-color: #922020; 
+  box-shadow: none;
+  transition: ease-out 0.3s;
+}
+
+.vaciar-comprar {
+display: flex;
+justify-content: space-between;
+align-items: center; 
+}
+
+.btn-vaciar {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.cart-total {
+  text-align: right;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.cart-total p {
+  margin-bottom: 20px;
+}
+
+.disabled {
+  display: none;
 }
