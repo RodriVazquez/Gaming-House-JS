@@ -11,7 +11,7 @@ const total = document.querySelector("#total");
 const btnComprar = document.querySelector("#btn-comprar-carrito");
 
 
-
+// funcion que recupera del LS los productos que habia en el arr carrito del index y los genera en el html.
 function mostrarProdsEnCarrito () {
     if (prodsEnCarrito && prodsEnCarrito.length > 0) {
         carritoVacio.classList.add("disabled");
@@ -70,17 +70,16 @@ function mostrarProdsEnCarrito () {
 
 mostrarProdsEnCarrito ();
 
-
+// funcion para poder utilizar el icono de "eliminar"
 function actualizarBtnEliminar () {
     carritoEliminarProd = document.querySelectorAll(".btn-eliminar");
 
     carritoEliminarProd.forEach (boton => {
         boton.addEventListener ("click", eliminarProd)
-        
     })
-
 }
 
+// funcion que elimina productos del carrito utilizando el boton configurado en la funcion anterior (actualizarBtnEliminar)
 function eliminarProd (e) {
     const idProducto = e.currentTarget.id;
     const index = prodsEnCarrito.findIndex(producto => producto.id === idProducto);
@@ -88,11 +87,10 @@ function eliminarProd (e) {
 
     mostrarProdsEnCarrito ();
 
-
     localStorage.setItem("prodsEnCarrito", JSON.stringify(prodsEnCarrito))
 }
 
-
+// funcion que elimina TODOS los productos del carrito
 btnVaciar.addEventListener ("click", vaciarCarrito);
 function vaciarCarrito () {
     prodsEnCarrito.length = 0;
@@ -100,14 +98,14 @@ function vaciarCarrito () {
     mostrarProdsEnCarrito ()
 }
 
-
+// funcion que actualiza el total del carrito con el método .reduce
 function actualizarTotal (){
     const totalActualizado = prodsEnCarrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
-    total.innerText = `Total: $${totalActualizado.toLocaleString()}`
+    total.innerText = `Total: $${totalActualizado.toLocaleString()}` // .toLocaleString() para que aparezca el separador de millares  (Vemos 1.000 en vez de 1000)
 }
 
 
-
+// funcion para comprar todos los productos del carrito. Al no tener una base de datos, la funcion es similar a la de vaciarCarrito, pero en este caso hace que se muestre un mensaje de "compra exitosa" en vez de "carrito vacio" (todo con el uso de .classList add y remove). 
 btnComprar.addEventListener ("click", comprarCarrito);
 function comprarCarrito () {
     prodsEnCarrito.length = 0;
