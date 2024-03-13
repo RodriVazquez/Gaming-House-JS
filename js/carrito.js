@@ -28,7 +28,7 @@ function mostrarProdsEnCarrito () {
             <div>
                 <div class="product">
 
-                <img src="${producto.img}" alt="${producto.producto}">
+                <img src="../${producto.img}" alt="${producto.producto}">
 
                 <div>
                     <small>Producto:</small>
