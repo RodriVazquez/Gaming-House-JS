@@ -71,18 +71,22 @@ function limpiarHTML() {
 
 // Crea las cards en el HTML
 function crearHTML(productosMostrados) {
-    for (const producto of productosMostrados) {
+
+    for (const prod of productosMostrados) {
+        
+        const {id, producto, precio, img} = prod; // el nombre de esta variable tiene que ser la misma que la del bucle for...of
+
         let productoHTML = document.createElement("div");
         productoHTML.classList.add("card");
 
         productoHTML.innerHTML = `
             <div class="imgBox">
-                <img src="${producto.img}" alt="${producto.producto}" class="card-img">
+                <img src="${img}" alt="${producto}" class="card-img">
             </div>
             <div class="contentBox">
-                <h3>${producto.producto}</h3>
-                <h2 class="price">$${producto.precio.toLocaleString()}</h2>
-                <button id="${producto.id}" class="btn-agregar"><i class="bi bi-bag-plus-fill"></i>agregar</button>
+                <h3>${producto}</h3>
+                <h2 class="price">$${precio.toLocaleString()}</h2>
+                <button id="${id}" class="btn-agregar"><i class="bi bi-bag-plus-fill"></i>agregar</button>
             </div>
         `;
 

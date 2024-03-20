@@ -13,6 +13,7 @@ const btnComprar = document.querySelector("#btn-comprar-carrito");
 
 // funcion que recupera del LS los productos que habia en el arr carrito del index y los genera en el html.
 function mostrarProdsEnCarrito () {
+
     if (prodsEnCarrito && prodsEnCarrito.length > 0) {
         carritoVacio.classList.add("disabled");
         carritoProductos.classList.remove("disabled");
@@ -21,36 +22,37 @@ function mostrarProdsEnCarrito () {
 
         carritoProductos.innerHTML = "";
 
-        prodsEnCarrito.forEach(producto =>{
+        prodsEnCarrito.forEach(prod =>{
+            const {id, producto, precio, img, cantidad} = prod
             const div = document.createElement ("div");
             div.classList.add ("carrito-products");
             div.innerHTML = `
             <div>
                 <div class="product">
 
-                <img src="../${producto.img}" alt="${producto.producto}">
+                <img src="../${img}" alt="${producto}">
 
                 <div>
                     <small>Producto:</small>
-                    <p class="upperCase">${producto.producto}</p>
+                    <p class="upperCase">${producto}</p>
                 </div>
 
                 <div>
                     <small>Cantidad:</small>
-                    <p class="upperCase">${producto.cantidad}</p>
+                    <p class="upperCase">${cantidad}</p>
                 </div>
 
                 <div>
                     <small>Precio:</small>
-                    <p class="upperCase">${producto.precio}</p>
+                    <p class="upperCase">${precio}</p>
                 </div>
                 
                 <div>
                     <small>Subtotal:</small>
-                    <p class="upperCase">${producto.precio * producto.cantidad}</p>
+                    <p class="upperCase">${precio * cantidad}</p>
                 </div>
                 
-                <button class="btn-eliminar" id="${producto.id}"><i class="bi bi-trash3-fill"></i></button>
+                <button class="btn-eliminar" id="${id}"><i class="bi bi-trash3-fill"></i></button>
             </div>`;
 
             carritoProductos.append(div)
