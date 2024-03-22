@@ -4,7 +4,7 @@ contenedorProductos = document.querySelector("#productos-carrito"),
 numProdCarrito = document.querySelector("#num-prods-carrito")
 let btnAgregar = document.querySelectorAll(".btn-agregar");
 
-const URL = "./db/db.json"
+const URL = "../db/db.json"
 fetch (URL)
 .then (res => res.json()
 .then(data => {
