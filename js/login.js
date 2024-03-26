@@ -2,10 +2,16 @@ const loginFormulario = document.querySelector("#formLogin"),
     usuarioLogin = document.querySelector("#userLogin"),
     contraseñaLogin = document.querySelector("#passwordLogin");
 
+
+    // Funcion que se comunica con el LS para simular un inicio de sesión 
     function login (usuarios) {
         if (!usuarios) {
-            // alert de sweetalert
-            alert ("usuario no encontrado"); // solo de testeo
+            Swal.fire({
+                icon: "error",
+                title: "Usuario no encontrado",
+                text: "Revise sus credenciales",
+                footer: '<a href="./pages/registro.html">Registrarse</a>'
+            });
             return;
         }
         let usuarioEncontrado = usuarios.find ((usuario) => {
@@ -13,27 +19,29 @@ const loginFormulario = document.querySelector("#formLogin"),
         });
         if (usuarioEncontrado) {
 
-                    Swal.fire({
-                        title: `Bienvenido ${usuarioLogin.value}`,
-                        text: "En unos segundos serás redirigido",
-                        icon: "success"
-                    });
-                    
-                    setTimeout(function() {
-                        location.href = "./pages/home.html";
-                    }, 3000)
+            Swal.fire({
+                title: `Bienvenido ${usuarioLogin.value}`,
+                text: "En unos segundos serás redirigido",
+                icon: "success"
+            });
+            
+            setTimeout(function() {
+                location.href = "./pages/home.html";
+            }, 3000)
 
         } else {
+
             Swal.fire({
                 icon: "error",
                 title: "Usuario no encontrado",
                 text: "Revise sus credenciales",
                 footer: '<a href="./pages/registro.html">Registrarse</a>'
             });
+
         }
     }
 
-
+    // Listener para el submit de Iniciar sesión
     loginFormulario.addEventListener("submit", (e)=> {
         e.preventDefault();
         let usuariosLS = JSON.parse (localStorage.getItem("usuarios"));

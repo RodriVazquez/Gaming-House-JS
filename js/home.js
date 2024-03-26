@@ -104,6 +104,25 @@ function agregarAlCarrito (e) {
     actualizarNumsProdCarrito ()
 
     localStorage.setItem("prodsEnCarrito", JSON.stringify(carrito))
+
+        Toastify({
+            text: "Producto agregado al carrito",
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", 
+            position: "right", 
+            offset: {
+                x: 0, 
+                y: 130
+            },
+            stopOnFocus: true, 
+            style: {
+            background: "linear-gradient(90deg, rgba(46,46,177,1) 0%, rgba(101,14,214,0.90) 22%, rgba(222,0,255,0.4317927854735645) 100%)",
+            },
+            onClick: function(){} 
+        }).showToast();
 }
 
 // funcion para que el numero de productos en el carrito (que se sitúa al lado de la imagen del carrito en el nav) se actualice correctamente.

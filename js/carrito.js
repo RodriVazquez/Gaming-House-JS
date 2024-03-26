@@ -98,6 +98,25 @@ function eliminarProd (e) {
     mostrarProdsEnCarrito ();
 
     localStorage.setItem("prodsEnCarrito", JSON.stringify(prodsEnCarrito))
+
+    Toastify({
+        text: "Producto eliminado del carrito",
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", 
+        position: "right", 
+        offset: {
+            x: 0, 
+            y: 130
+        },
+        stopOnFocus: true, 
+        style: {
+        background: "linear-gradient(90deg, rgba(191,24,50,1) 0%, rgba(200,39,39,0.9471989479385504) 22%, rgba(186,8,8,1) 100%)",
+        },
+        onClick: function(){} 
+    }).showToast();
 }
 
 // funcion que elimina TODOS los productos del carrito
@@ -105,6 +124,24 @@ function vaciarCarrito () {
     prodsEnCarrito.length = 0;
     localStorage.setItem ("prodsEnCarrito", JSON.stringify(prodsEnCarrito));
     mostrarProdsEnCarrito ()
+    Toastify({
+        text: "Tu carrito ha sido vaciado con éxito",
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", 
+        position: "right", 
+        offset: {
+            x: 0, 
+            y: 130
+        },
+        stopOnFocus: true, 
+        style: {
+        background: "linear-gradient(90deg, rgba(191,24,50,1) 0%, rgba(200,39,39,0.9471989479385504) 22%, rgba(186,8,8,1) 100%)",
+        },
+        onClick: function(){} 
+    }).showToast();
 }
 
 // funcion que actualiza el total del carrito con el método .reduce
@@ -122,5 +159,12 @@ function comprarCarrito () {
     carritoProductos.classList.add("disabled");
     carritoAcciones.classList.add("disabled");
     carritoComprar.classList.remove("disabled");
+
+
+    Swal.fire({
+        title: "¡Compra realizada con éxito!",
+        text: "Muchas gracias por elegirnos. ¡Hasta la próxima!",
+        icon: "success"
+    });
 }
 

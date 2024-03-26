@@ -8,7 +8,7 @@ const registroFormulario =  document.querySelector("#formRegister"),
 
 let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-
+// funcion constructora para crear usuarios en el LS
 function Usuario (nombre, usuario, email, contraseña) {
     this.nombre = nombre;
     this.usuario = usuario;
@@ -17,7 +17,7 @@ function Usuario (nombre, usuario, email, contraseña) {
 
 };
 
-
+// Listener para crear un usuario nuevo y guardarlo en LS. Con este usuario y contraseña que se creó, vamos a poder iniciar sesión y acceder a la página principal
 registroFormulario.addEventListener("submit", (e)=> {
     e.preventDefault();
     const nuevoUsuario = new Usuario (nombre.value, usuarioR.value, emailR.value, contraseñaR.value);
