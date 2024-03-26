@@ -20,7 +20,7 @@ const loginFormulario = document.querySelector("#formLogin"),
         if (usuarioEncontrado) {
 
             Swal.fire({
-                title: `Bienvenido ${usuarioLogin.value}`,
+                title: `Bienvenido/a ${usuarioLogin.value}`,
                 text: "En unos segundos serás redirigido",
                 icon: "success"
             });

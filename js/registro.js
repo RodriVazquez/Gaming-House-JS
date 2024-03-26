@@ -24,7 +24,7 @@ registroFormulario.addEventListener("submit", (e)=> {
     usuarios.push (nuevoUsuario);
     if (nuevoUsuario) {
         Swal.fire({
-            title: "Registrado con éxito",
+            title: "Usuario registrado con éxito",
             text: "En unos segundos serás redirigido",
             icon: "success"
         });
