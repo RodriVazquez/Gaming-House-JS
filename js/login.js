@@ -12,11 +12,24 @@ const loginFormulario = document.querySelector("#formLogin"),
             return usuario.usuario == usuarioLogin.value && usuario.contraseña == contraseñaLogin.value;
         });
         if (usuarioEncontrado) {
-            location.href="./pages/home.html";
+
+                    Swal.fire({
+                        title: `Bienvenido ${usuarioLogin.value}`,
+                        text: "En unos segundos serás redirigido",
+                        icon: "success"
+                    });
+                    
+                    setTimeout(function() {
+                        location.href = "./pages/home.html";
+                    }, 3000)
+
         } else {
-            // alert de sweetalert
-            alert ("usuario no encontrado");
-            console.log("not user"); // solo de testeo
+            Swal.fire({
+                icon: "error",
+                title: "Usuario no encontrado",
+                text: "Revise sus credenciales",
+                footer: '<a href="./pages/registro.html">Registrarse</a>'
+            });
         }
     }
 
@@ -27,3 +40,5 @@ const loginFormulario = document.querySelector("#formLogin"),
         login (usuariosLS)
         return usuariosLS;
     })
+
+    

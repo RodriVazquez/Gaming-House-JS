@@ -22,9 +22,19 @@ registroFormulario.addEventListener("submit", (e)=> {
     e.preventDefault();
     const nuevoUsuario = new Usuario (nombre.value, usuarioR.value, emailR.value, contraseñaR.value);
     usuarios.push (nuevoUsuario);
+    if (nuevoUsuario) {
+        Swal.fire({
+            title: "Registrado con éxito",
+            text: "En unos segundos serás redirigido",
+            icon: "success"
+        });
+
+        setTimeout(function() {
+            location.href = "../index.html";
+        }, 3000)
+    }
     let guardarEnLS = localStorage.setItem("usuarios", JSON.stringify(usuarios));
     registroFormulario.reset();
     return guardarEnLS;
 })
 
-// logica de login minuto 1:33:15

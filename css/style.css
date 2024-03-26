@@ -148,21 +148,13 @@ form .signup-link a:hover{
 }
 
 
-/***************************************************** REGISTER *****************************************************/
-
-
-.wrapper-register {
-  margin-top: 10rem;
-}
-
-
 /***************************************************** INDEX *****************************************************/
 
 .index-background {
   height: 100vh;
-  background-image: url(https://res.cloudinary.com/dtwcavcej/image/upload/v1710945987/img/gaming-house_binb6u.webp);
+  background-image: url(https://res.cloudinary.com/dtwcavcej/image/upload/c_crop,w_3840,h_1900/v1710945987/img/gaming-house_binb6u.webp);
   background-size: cover;
-  background-position: center center;
+  overflow: hidden;
 }
 
 .nav {
